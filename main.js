@@ -1,6 +1,7 @@
 require('dotenv').config();
 
 const webdriver = require('selenium-webdriver');
+const chrome    = require('selenium-webdriver/chrome');
 const { Builder, By, until } = webdriver;
 const JapaneseHolidays = require('japanese-holidays');
 
@@ -12,8 +13,12 @@ const password = process.env.USER_PASS;
 const arrive_button_id = "record_qmXXCxw9WEWN3X/YrkMWuQ==";
 const leave_button_id = "record_j8ekmJaw6W3M4w3i6hlSIQ==";
 
+const options = new chrome.Options();
+options.addArguments('headless');
+options.addArguments('disable-gpu');
+
 const main = async (button_id) => {
-    const driver = await new Builder().forBrowser('chrome').build();
+    const driver = await new Builder().forBrowser('chrome').setChromeOptions(options).build();
     await driver.get(url);
 
     await driver.wait(until.elementLocated(By.id("id")), 10000);
