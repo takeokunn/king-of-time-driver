@@ -1,0 +1,17 @@
+{
+  "name": "king_of_time_driver",
+  "version": "1.0.0",
+  "description": "",
+  "main": "main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "arrive": "node main.js arrive",
+    "leave": "node main.js leave"
+  },
+  "author": "takeokunn",
+  "license": "ISC",
+  "dependencies": {
+    "dotenv": "^7.0.0",
+    "selenium-webdriver": "^4.0.0-alpha.1"
+  }
+}
