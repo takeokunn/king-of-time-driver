@@ -2,6 +2,7 @@ require('dotenv').config();
 
 const webdriver = require('selenium-webdriver');
 const { Builder, By, until } = webdriver;
+const JapaneseHolidays = require('japanese-holidays');
 
 const url = "https://s2.kingtime.jp/independent/recorder/personal/";
 
@@ -15,7 +16,6 @@ const main = async (button_id) => {
     const driver = await new Builder().forBrowser('chrome').build();
     await driver.get(url);
 
-    // login
     await driver.wait(until.elementLocated(By.id("id")), 10000);
     await driver.findElement(By.id("id")).sendKeys(id);
     await driver.findElement(By.id("password")).sendKeys(password);
@@ -27,5 +27,8 @@ const main = async (button_id) => {
     await driver.quit();
 };
 
+const today = new Date();
+const is_weekend = today.getDay() === 0? today.getDay() === 6? true : false : false;
+
 const button_id = process.argv[0] === "arrive"? arrive_button_id : leave_button_id;
-main(button_id);
+(is_weekend && JapaneseHolidays.isHoliday(today))? console.log("not weekday") : main(button_id);
