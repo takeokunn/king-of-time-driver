@@ -35,5 +35,5 @@ const main = async (button_id) => {
 const today = new Date();
 const is_weekend = today.getDay() === 0? today.getDay() === 6? true : false : false;
 
-const button_id = process.argv[0] === "arrive"? arrive_button_id : leave_button_id;
+const button_id = process.argv[2] === "arrive"? arrive_button_id : leave_button_id;
 (is_weekend && JapaneseHolidays.isHoliday(today))? console.log("not weekday") : main(button_id);
