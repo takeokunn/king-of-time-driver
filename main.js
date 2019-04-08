@@ -1,9 +1,10 @@
 require('dotenv').config();
 
 const webdriver = require('selenium-webdriver');
-const chrome    = require('selenium-webdriver/chrome');
-const { Builder, By, until } = webdriver;
+const chrome = require('selenium-webdriver/chrome');
 const JapaneseHolidays = require('japanese-holidays');
+
+const { Builder, By, until } = webdriver;
 
 const url = "https://s2.kingtime.jp/independent/recorder/personal/";
 
@@ -32,11 +33,5 @@ const main = async (button_id) => {
     await driver.quit();
 };
 
-const today = new Date();
-const is_weekend = today.getDay() === 0? today.getDay() === 6? true : false : false;
-
 const button_id = process.argv[2] === "arrive"? arrive_button_id : leave_button_id;
-
-if (!is_weekend && !JapaneseHolidays.isHoliday(today)) {
-    main(button_id);
-}
+main(button_id);
