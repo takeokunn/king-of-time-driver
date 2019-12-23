@@ -11,8 +11,8 @@
   "author": "takeokunn",
   "license": "ISC",
   "dependencies": {
-    "dotenv": "^7.0.0",
-    "japanese-holidays": "^1.0.8",
-    "selenium-webdriver": "^4.0.0-alpha.1"
+    "dotenv": "^8.2.0",
+    "japanese-holidays": "^1.0.9",
+    "selenium-webdriver": "^4.0.0-alpha.5"
   }
 }
